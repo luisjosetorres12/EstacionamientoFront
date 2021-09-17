@@ -7,6 +7,7 @@ export interface TicketModel {
     fechaSalidaSugerida: Date,
     fechaSalida: Date,
     matricula: string
+    total: string
 }
 
 export interface TicketParams {

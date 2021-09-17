@@ -19,7 +19,7 @@ export interface ModalFilterProps {
   closeModal: (value: boolean) => void;
   ticketParams: TicketParams;
   setParams: (value: any) => void;
-  searchTickets: () => void;
+  searchTickets: (value: number) => void;
 }
 
 export const ModalFilter: React.FC<ModalFilterProps> = ({
@@ -30,13 +30,12 @@ export const ModalFilter: React.FC<ModalFilterProps> = ({
   searchTickets,
 }) => {
   const handleCloseModal = () => {
-    console.log('Se ha cerrado el modal');
     closeModal(false);
   };
 
   const handleClick = () => {
     console.log('Se esta buscando');
-    searchTickets();
+    searchTickets(0);
   };
 
   return (

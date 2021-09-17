@@ -2,11 +2,19 @@ import React, { useContext } from 'react';
 import { ListTickets } from '../../components/ListTickets/index';
 import { ModalFilter } from '../../components/ModalFilter';
 import { TicketsContext } from '../../context/TicketsContext';
+import { ModalFinish } from '../../components/ModalFinish';
 
 export const ListContainer: React.FC = () => {
   const {
-    data: { openModal, ticketParams },
-    mutations: { setOpenModal, setTicketParams, filterTickets },
+    data: { openModal, ticketParams, totalPages, finishModal },
+    mutations: {
+      setOpenModal,
+      setTicketParams,
+      filterTickets,
+      setPage,
+      getTickets,
+      setFinishModal,
+    },
   } = useContext(TicketsContext);
   return (
     <div>
@@ -17,7 +25,13 @@ export const ListContainer: React.FC = () => {
         setParams={setTicketParams}
         searchTickets={filterTickets}
       />
-      <ListTickets />
+      <ListTickets
+        totalPages={totalPages}
+        setPage={setPage}
+        getTickets={getTickets}
+        openModal={setFinishModal}
+      />
+      <ModalFinish open={finishModal} closeModal={setFinishModal} />
     </div>
   );
 };
